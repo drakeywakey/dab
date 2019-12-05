@@ -1,11 +1,17 @@
 const { Client } = require('pg');
+const { pgUser,
+        pgHost,
+        pgDatabase,
+        pgPassword,
+        pgPort
+     } = require('./config');
 
 const client = new Client({
-    user: 'postgres',
-    host: 'localhost',
-    database: 'dab',
-    password: 'password',
-    port: 5432
+    user: pgUser,
+    host: pgHost,
+    database: pgDatabase,
+    password: pgPassword,
+    port: pgPort
 });
 
 module.exports = async function getClient() {
