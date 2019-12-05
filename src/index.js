@@ -1,9 +1,12 @@
 const express = require('express');
-const app = express();
-const brandRouter = require('./routes/brand');
+const { getBrands } = require('./controllers');
 const { port } = require('./config');
+const makeCallback = require('./express-callback');
 
-app.use('/brands', brandRouter);
+const app = express();
+
+//app.use('/brands', brandRouter);
+app.use('/brands', makeCallback(getBrands));
 
 app.get('/divisions', async (req, res) => {
     let divisions = await getDivisions(client);
