@@ -17,7 +17,8 @@ run migrations:
 
 `npm run migrate up`
 
-you'll need to add a .env file to the root with all teh secrets
+you'll need to add a .env file to the root with all teh secrets.
+the PG* config is especially important -- the postgres pooling requires those environment variables
 
 
 then `npm start` to start this sucker up
