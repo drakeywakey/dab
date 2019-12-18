@@ -1,0 +1,27 @@
+version: '3'
+
+services:
+  database:
+    image: postgres
+    container_name: pg_container
+    volumes:
+       - pgdata:/var/lib/postgresql/data
+
+  app:
+    build: .
+    container_name: node_container
+    ports:
+     - "3000:3000"
+    links:
+     - database
+    environment:
+      - PGPASSWORD=password
+      - PGUSER=postgres
+      - PGDATABASE=dab
+      - PGHOST=database
+      - PGPORT=5432
+    depends_on:
+      - database
+
+volumes:
+  pgdata: {}
